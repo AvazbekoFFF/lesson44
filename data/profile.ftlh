@@ -32,20 +32,29 @@
 
 <div class="container ">
    <table class="table table-xl m-2 table-hover">
-     <tbody>
-        <tr>
-            <td>${info.booksInfo}</td>
-            <td><a type="button" class="btn btn-info" href="/info/listOfBooks">Info</a></td>
-        </tr>
-        <tr>
-            <td>${info.employees}</td>
-            <td><a type="button" class="btn btn-info" href="/info/employees">Info</a></td>
-        </tr>
-        <tr>
-             <td>${info.employeeBooks}</td>
-             <td><a type="button" class="btn btn-info" href="/info/employeeBooks">Info</a></td>
-        </tr>
-     </tbody>
+     <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Lastname</th>
+              <th scope="col">Age</th>
+            </tr>
+          </thead>
+           <tfoot>
+                 <tr>
+                 <th scope="col">Name</th>
+                 <th scope="col">Lastname</th>
+                 <th scope="col">Age</th>
+                 </tr>
+            </tfoot>
+          <tbody>
+            <#list users as us>
+             <tr>
+                 <td>${us.name}</td>
+                 <td>${us.login}</td>
+                 <td>${us.password}</td>
+             </tr>
+             </#list>
+          </tbody>
    </table>
 </body>
 </body>

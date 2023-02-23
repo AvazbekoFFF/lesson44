@@ -3,12 +3,20 @@ package kz.attractor.java.server;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpServer;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.InetSocketAddress;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import static java.util.stream.Collectors.joining;
 
 public abstract class BasicServer {
 
@@ -66,6 +74,25 @@ public abstract class BasicServer {
         registerFileHandler(".jpg", ContentType.IMAGE_JPEG);
         registerFileHandler(".png", ContentType.IMAGE_PNG);
 
+    }
+    protected String getBody(HttpExchange exchange){
+        InputStream input = exchange.getRequestBody();
+        Charset utf8 = StandardCharsets.UTF_8;
+        InputStreamReader isr = new InputStreamReader(input, utf8);
+        try (BufferedReader reader = new BufferedReader(isr)) {
+            return reader.lines().collect(joining(""));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+    protected static String getContentType(HttpExchange exchange){
+        return exchange.getRequestHeaders()
+                .getOrDefault("Content-Type", List.of(""))
+                .get(0);
+    }
+    protected final void registerPost(String route, RouteHandler handler) {
+        getRoutes().put("POST " + route, handler);
     }
 
     protected final void registerGet(String route, RouteHandler handler) {
@@ -127,5 +154,14 @@ public abstract class BasicServer {
 
     public final void start() {
         server.start();
+    }
+    protected void redirect303(HttpExchange exchange, String path){
+        try{
+            exchange.getResponseHeaders().add("Location", path);
+            exchange.sendResponseHeaders(303, 0);
+            exchange.getRequestBody().close();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }

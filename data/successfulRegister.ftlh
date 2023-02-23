@@ -34,16 +34,8 @@
    <table class="table table-xl m-2 table-hover">
      <tbody>
         <tr>
-            <td>${info.booksInfo}</td>
-            <td><a type="button" class="btn btn-info" href="/info/listOfBooks">Info</a></td>
-        </tr>
-        <tr>
-            <td>${info.employees}</td>
-            <td><a type="button" class="btn btn-info" href="/info/employees">Info</a></td>
-        </tr>
-        <tr>
-             <td>${info.employeeBooks}</td>
-             <td><a type="button" class="btn btn-info" href="/info/employeeBooks">Info</a></td>
+            <td>Вы успешно зарегистрировались! Нажмите в кнопку main что бы перейти в главное меню</td>
+            <td><a type="button" class="btn btn-info" href="/info">Main</a></td>
         </tr>
      </tbody>
    </table>

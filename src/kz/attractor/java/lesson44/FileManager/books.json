@@ -1,0 +1,16 @@
+[
+  {
+    "img":"https://m.media-amazon.com/images/M/MV5BYmQxOTBiMDctZjUyNy00MGYwLWJmOWYtZTUwNGEwMTkyMjdjXkEyXkFqcGdeQXVyMjk2MTQxMzg@._V1_.jpg",
+    "name": "Harry Potter: Part 1",
+    "author": "Joanne Rowling",
+    "genre": "fantasy",
+    "year": 1997
+  },
+  {
+    "img":"https://cdn11.bigcommerce.com/s-pfbbr25tq3/products/2181/images/3138/HarryPotterandtheDeathlyHallowsPart2__62196.1578989433.500.750.jpg?c=2",
+    "name": "Harry Potter: Part 2",
+    "author": "Joanne Rowling",
+    "genre": "fantasy",
+    "year": 1998
+  }
+]

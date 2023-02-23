@@ -1,13 +1,17 @@
 package kz.attractor.java.lesson44;
 
-public class BookDataModel {
-    private Book book;
+import kz.attractor.java.lesson44.FileManager.FileService;
 
-    public BookDataModel() {
-        this.book = new Book("https://static1.colliderimages.com/wordpress/wp-content/uploads/2021/11/hp7.jpg", "Harry Potter: Part 1", "Jane Blum", "fantasy", 1987);
+import java.util.List;
+
+public class BookDataModel {
+    private List<Book> books = FileService.readFileBook();
+
+    public List<Book> getBooks() {
+        return books;
     }
 
-    public Book getBook() {
-        return book;
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 }
